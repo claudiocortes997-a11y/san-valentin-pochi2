@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>San Valentín 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 30px;
+      border-radius: 25px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      margin-bottom: 25px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .yes-btn {
+      background: #ff4d6d;
+      border: none;
+      color: white;
+      font-size: 20px;
+      padding: 15px 30px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .yes-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .no-btn {
+      background: #555;
+      border: none;
+      color: white;
+      font-size: 16px;
+      padding: 12px 22px;
+      border-radius: 50px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+    .letter {
+      margin-top: 20px;
+      font-size: 18px;
+      background: rgba(255,255,255,0.15);
+      padding: 18px;
+      border-radius: 18px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PANTALLA INICIAL -->
+  <div class="container" id="firstScreen">
+    <h1>¿Quieres ser mi San Valentín? 💘</h1>
+    <div class="buttons">
+      <button class="yes-btn" onclick="sayYes()">❤️ Sí</button>
+      <button class="no-btn" onmouseover="moveButton(this)">No</button>
+    </div>
+  </div>
+
+  <!-- PANTALLA FINAL -->
+  <div class="container hidden" id="secondScreen">
+    <h1>💖 Te amo 💖</h1>
+
+    <!-- CAMBIA foto.jpg por tu foto -->
+    <img src="foto.jpg" alt="Nosotros">
+
+    <div class="letter">
+      Te amo muchísimo y soy feliz todos los días desde que la conocí.
+    </div>
+
+    <!-- CAMBIA cancion.mp3 por tu canción -->
+    <audio id="music" src="cancion.mp3" loop></audio>
+  </div>
+
+  <script>
+    function moveButton(btn) {
+      const x = Math.random() * 250 - 125;
+      const y = Math.random() * 250 - 125;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function sayYes() {
+      document.getElementById("firstScreen").classList.add("hidden");
+      document.getElementById("secondScreen").classList.remove("hidden");
+      document.getElementById("music").play();
+    }
+  </script>
+
+</body>
+</html>
